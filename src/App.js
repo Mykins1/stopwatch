@@ -198,7 +198,7 @@ export default function Stopwatch() {
                         Lap {lap.number}
                       </span>
                       <span
-                        className={`${themeClasses.text} font-mono`}
+                        className={`${themeClasses.text} font-bold`}
                         style={{ fontFamily: "Courier New, monospace" }}
                       >
                         {formatTime(lap.time)}
