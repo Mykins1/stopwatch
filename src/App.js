@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Play, Pause, Square, RotateCcw, Sun, Moon, Timer } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Play, Pause, Square, RotateCcw, Sun, Moon } from "lucide-react";
 
 export default function Stopwatch() {
   const [time, setTime] = useState(0);
@@ -94,7 +94,7 @@ export default function Stopwatch() {
           {/* Dark Mode Toggle - top right corner */}
           <button
             onClick={toggleDarkMode}
-            className={`w-12 h-12 rounded-full transition-all duration-300 transform hover:scale-105 z-10 flex items-center justify-center absolute top-2.5 right-3`}
+            className={`w-12 h-12 p-0 rounded-full transition-all duration-300 transform hover:scale-105 z-10 flex items-center justify-center absolute top-2.5 right-3`}
             style={{
               backgroundColor: isDarkMode ? "rgba(39,39,42,0.9)" : "#f4f4f5",
               color: isDarkMode ? "#f4f4f5" : "#18181b",
@@ -109,9 +109,9 @@ export default function Stopwatch() {
           {/* Title */}
           <div className="flex items-center justify-center gap-4 mb-4">
             <h1
-              className={`flex items-center justify-center gap-1 text-3xl font-bold ${themeClasses.text}`}
+              className={`flex items-center justify-center gap-1 text-xl md:text-3xl font-medium ${themeClasses.text}`}
             >
-              <Timer className="w-8 h-8" /> Stopwatch
+              Stopwatch
             </h1>
           </div>
           {/* Time Display */}
@@ -120,7 +120,7 @@ export default function Stopwatch() {
               className={`${themeClasses.timeDisplay} rounded-2xl p-6 mb-4 border`}
             >
               <div
-                className={`text-5xl font-mono font-bold ${themeClasses.text} tracking-widest transition-all duration-300 ease-in-out`}
+                className={`text-3xl md:text-5xl  font-extrabold ${themeClasses.text} transition-all duration-300 ease-in-out`}
                 style={{ fontFamily: "Courier New, monospace" }}
               >
                 {formatTime(time)}
