@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Play, Pause, Square, RotateCcw, Sun, Moon } from "lucide-react";
+import "./App.css";
+
 
 export default function Stopwatch() {
   const [time, setTime] = useState(0);
@@ -83,10 +85,10 @@ export default function Stopwatch() {
     <>
       <div
         className={`${themeClasses.background} flex items-center justify-center p-4`}
-        style={{
-          fontFamily:
-            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-        }}
+        // style={{
+        //   fontFamily:
+        //     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        // }}
       >
         <div
           className={`${themeClasses.container} rounded-3xl shadow-2xl border p-4 w-full max-w-md relative`}
@@ -109,7 +111,7 @@ export default function Stopwatch() {
           {/* Title */}
           <div className="flex items-center justify-center gap-4 mb-4">
             <h1
-              className={`flex items-center justify-center gap-1 text-xl md:text-3xl font-medium ${themeClasses.text}`}
+              className={`flex items-center justify-center gap-1 text-xl md:text-3xl font-bold ${themeClasses.text}`}
             >
               Stopwatch
             </h1>
@@ -120,7 +122,7 @@ export default function Stopwatch() {
               className={`${themeClasses.timeDisplay} rounded-2xl p-6 mb-4 border`}
             >
               <div
-                className={`text-3xl md:text-5xl  font-extrabold ${themeClasses.text} transition-all duration-300 ease-in-out`}
+                className={`text-4xl md:text-5xl  font-extrabold ${themeClasses.text} transition-all duration-300 ease-in-out`}
                 style={{ fontFamily: "Courier New, monospace" }}
               >
                 {formatTime(time)}
