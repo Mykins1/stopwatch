@@ -94,16 +94,16 @@ export default function Stopwatch() {
           {/* Dark Mode Toggle - top right corner */}
           <button
             onClick={toggleDarkMode}
-            className={`w-12 h-12 p-0 rounded-full transition-all duration-300 transform hover:scale-105 z-10 flex items-center justify-center absolute top-2.5 right-3`}
+            className={`w-6 h-6 md:w-12 md:h-12 p-0 rounded-full transition-all duration-300 transform hover:scale-105 z-10 flex items-center justify-center absolute top-4.5 right-4 md:top-2.5 md:right-3`}
             style={{
               backgroundColor: isDarkMode ? "rgba(39,39,42,0.9)" : "#f4f4f5",
               color: isDarkMode ? "#f4f4f5" : "#18181b",
             }}
           >
             {isDarkMode ? (
-              <Sun className="w-6 h-6" />
+              <Sun className="w-5 h-5 md:w-6 md:h-6" />
             ) : (
-              <Moon className="w-5 h-5" fill="currentColor" />
+              <Moon className="w-5 h-5 md:w-6 md:h-6" fill="currentColor" />
             )}
           </button>
           {/* Title */}
