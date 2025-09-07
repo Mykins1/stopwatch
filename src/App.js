@@ -166,7 +166,7 @@ export default function Stopwatch() {
 
           {/* Button Labels */}
           <div
-            className={`flex justify-center gap-4 mb-6 text-lg ${themeClasses.text}`}
+            className={`flex justify-center gap-4 mb-6 text-lg font-medium ${themeClasses.text}`}
           >
             <span className="w-14 text-center">
               {!hasStarted ? "Start" : isRunning ? "Pause" : "Resume"}
