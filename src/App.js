@@ -84,11 +84,7 @@ export default function Stopwatch() {
   return (
     <>
       <div
-        className={`${themeClasses.background} flex items-center justify-center p-4`}
-        // style={{
-        //   fontFamily:
-        //     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-        // }}
+        className={`${themeClasses.background} flex flex-col items-center justify-center p-4`}
       >
         <div
           className={`${themeClasses.container} rounded-3xl shadow-2xl border p-4 w-full max-w-md relative`}
@@ -209,6 +205,9 @@ export default function Stopwatch() {
             </div>
           )}
         </div>
+        <span className={`${themeClasses.text} flex items-center mt-5 text-sm font-bold`}>
+          © Made by Mykel
+        </span>
       </div>
     </>
   );
