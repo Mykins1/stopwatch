@@ -4,24 +4,38 @@ import "./App.css";
 
 
 export default function Stopwatch() {
+ const startTimeRef = useRef(0);
+ const elapsedTimeRef = useRef(0);
+ const animationFrameRef = useRef(null);
+
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [laps, setLaps] = useState([]);
   const [hasStarted, setHasStarted] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const intervalRef = useRef(null);
 
-  useEffect(() => {
-    if (isRunning) {
-      intervalRef.current = setInterval(() => {
-        setTime((prevTime) => prevTime + 10);
-      }, 10);
-    } else {
-      clearInterval(intervalRef.current);
-    }
-
-    return () => clearInterval(intervalRef.current);
-  }, [isRunning]);
+ useEffect(() => {
+   if (isRunning) {
+     // Set the start time when the stopwatch starts or resumes
+     startTimeRef.current = Date.now() - elapsedTimeRef.current;
+ 
+     const updateTime = () => {
+       // Calculate the total elapsed time
+       const newTime = Date.now() - startTimeRef.current;
+       setTime(newTime);
+       elapsedTimeRef.current = newTime;
+       animationFrameRef.current = requestAnimationFrame(updateTime);
+     };
+ 
+     animationFrameRef.current = requestAnimationFrame(updateTime);
+   } else {
+     // Clear the animation frame when the stopwatch is paused
+     cancelAnimationFrame(animationFrameRef.current);
+   }
+ 
+   // Cleanup function to ensure the animation frame is canceled when the component unmounts
+   return () => cancelAnimationFrame(animationFrameRef.current);
+ }, [isRunning]);
 
   const formatTime = (timeMs) => {
     const minutes = Math.floor(timeMs / 60000);
@@ -45,6 +59,7 @@ export default function Stopwatch() {
   const handleReset = () => {
     setIsRunning(false);
     setTime(0);
+    elapsedTimeRef.current = 0;
     setLaps([]);
     setHasStarted(false);
   };
@@ -79,7 +94,7 @@ export default function Stopwatch() {
         timeDisplay: "bg-gray-200/50 border-gray-300",
         lapContainer: "bg-gray-200/30 border-gray-300",
         lapItem: "bg-gray-100/50 border-gray-200",
-      };
+      }
 
   return (
     <>
