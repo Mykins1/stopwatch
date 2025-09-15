@@ -13,6 +13,7 @@ export default function Stopwatch() {
   const [laps, setLaps] = useState([]);
   const [hasStarted, setHasStarted] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [countdown, IsCountdown] = useState(false)
 
  useEffect(() => {
    if (isRunning) {
@@ -46,6 +47,10 @@ export default function Stopwatch() {
       .toString()
       .padStart(2, "0")}:${centiseconds.toString().padStart(2, "0")}`;
   };
+
+  const handleCountdown = () =>{
+    IsCountdown(true)
+  }
 
   const handleStart = () => {
     setIsRunning(true);
